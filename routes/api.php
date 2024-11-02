@@ -21,8 +21,8 @@ use App\Http\Controllers\Api\EmployeeController;
 Route::get('/employees', [EmployeeController::class, 'index']); // tested
 Route::get('/employees/{id}', [EmployeeController::class, 'show']); // tested
 Route::post('/employees', [EmployeeController::class, 'store']);  // tested
-Route::put('/employees/{id}', [EmployeeController::class, 'update']); 
-Route::delete('/employees/{id}', [EmployeeController::class, 'destroy']);
+Route::put('/employees/{id}', [EmployeeController::class, 'update']); // tested 
+Route::delete('/employees/{id}', [EmployeeController::class, 'destroy']); // tested
 Route::get('/employees/highest-salary', [EmployeeController::class, 'highestSalary']); // tested
 
 
