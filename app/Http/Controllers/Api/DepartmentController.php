@@ -27,11 +27,7 @@ class DepartmentController extends Controller
         });
     }
 
-    // public function employeesByDepartment($id)
-    // {
-    //     $employees = Employee::where('department_id', $id)->get();
-    //     return response()->json($employees, 200);
-    // }
+  
 
     public function countEmployees()
     {
@@ -64,7 +60,11 @@ class DepartmentController extends Controller
         return response()->json(new DepartmentResource($department), 200);
      }
 
-   
+     // public function employeesByDepartment($id)
+    // {
+    //     $employees = Employee::where('department_id', $id)->get();
+    //     return response()->json($employees, 200);
+    // }
 
     //  public function store(Request $request)
     //  {

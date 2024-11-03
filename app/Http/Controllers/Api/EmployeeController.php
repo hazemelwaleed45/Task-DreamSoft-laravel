@@ -56,6 +56,8 @@ class EmployeeController extends Controller
         ]);
         //dd($request);
       
+        Cache::forget('employees');
+        Cache::forget('employee_count_by_department');
         return new EmployeeResource($employee);
     }
 
@@ -87,11 +89,14 @@ class EmployeeController extends Controller
 
         $employee->update($request->all());
       
+        Cache::forget('employees');
+        Cache::forget('employee_count_by_department');
         return new EmployeeResource($employee);
     }
 
     public function highestSalary()
     {
+        
         $highestSalaryEmployee = DB::table('employees')
             ->join('departments', 'employees.department_id', '=', 'departments.id')
             ->select('employees.first_name', 'employees.last_name', 'departments.name as department', 'employees.hire_date', 'employees.salary')
@@ -106,6 +111,8 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $employee->delete();
 
+        Cache::forget('employees');
+        Cache::forget('employee_count_by_department');
         return response()->json(['message' => 'Employee deleted successfully.']);
     }
 }
