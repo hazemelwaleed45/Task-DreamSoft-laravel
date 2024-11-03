@@ -22,7 +22,8 @@ class EmployeeResource extends JsonResource
             'phone_number' => $this->phone_number,
             'hire_date' => $this->hire_date,
             'salary' => $this->salary,
-            'department_name' => $this->department ? $this->department->name : null, 
+            // 'department_name' => $this->department ? $this->department->name : null, 
+            'department_id' => $this->department_id,
         ];
     }
 }

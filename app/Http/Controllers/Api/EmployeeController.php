@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
+use App\Models\Department;
 use App\Http\Resources\EmployeeResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -23,6 +24,11 @@ class EmployeeController extends Controller
 
     public function employeesByDepartment($departmentId)
     {
+       
+        $department = Department::find($departmentId);
+        if (!$department) {
+            return response()->json(['error' => 'Department not found'], 404);
+        }
         $employees = Employee::where('department_id', $departmentId)->get();
         return EmployeeResource::collection($employees);
     }
