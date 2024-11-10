@@ -15,11 +15,15 @@ class IpWhitelist
      * @param  \Closure  $next
      * @return mixed
      */
+
+
     public function handle(Request $request, Closure $next)
     {
      
-        $allowedIps = explode(',', env('ALLOWED_IPS', ''));
+        //$allowedIps = explode(',', env('ALLOWED_IPS'));
 
+        $allowedIps=["127.0.0.1","192.168.1.100"];
+        //dd($allowedIps);
         $clientIp = $request->ip();
 
         if (!in_array($clientIp, $allowedIps)) {
