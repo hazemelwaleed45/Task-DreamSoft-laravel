@@ -19,21 +19,21 @@ use App\Http\Controllers\Api\EmployeeController;
 // tested shows 403 Forbidden  and return "error": "Access denied."  if the ip not allowed
 Route::middleware(['ip.whitelist'])->group(function () {
     Route::get('/employees/highest-salary', [EmployeeController::class, 'highestSalary']); 
-    Route::get('/employees', [EmployeeController::class, 'index']);  // tested
+    Route::get('/employees', [EmployeeController::class, 'index']);  
     
-    Route::get('/employees/{id}', [EmployeeController::class, 'show']); // tested
-    Route::post('/employees', [EmployeeController::class, 'store']);  // tested
-    Route::put('/employees/{id}', [EmployeeController::class, 'update']); // tested 
-    Route::delete('/employees/{id}', [EmployeeController::class, 'destroy']); // tested
+    Route::get('/employees/{id}', [EmployeeController::class, 'show']); 
+    Route::post('/employees', [EmployeeController::class, 'store']); 
+    Route::put('/employees/{id}', [EmployeeController::class, 'update']); 
+    Route::delete('/employees/{id}', [EmployeeController::class, 'destroy']); 
     
 
 
-    Route::get('/departments/employees/count', [DepartmentController::class, 'countEmployees']); // tested
-    Route::get('/departments/average-salary', [DepartmentController::class, 'averageSalary']); // tested
-    Route::get('/departments', [DepartmentController::class, 'index']); // tested
+    Route::get('/departments/employees/count', [DepartmentController::class, 'countEmployees']); 
+    Route::get('/departments/average-salary', [DepartmentController::class, 'averageSalary']); 
+    Route::get('/departments', [DepartmentController::class, 'index']); 
 
 
-    Route::get('/departments/{id}/employees', [EmployeeController::class, 'employeesByDepartment']); //tested
+    Route::get('/department-employees/{id}', [EmployeeController::class, 'employeesByDepartment']); 
 });
 
 
